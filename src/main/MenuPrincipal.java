@@ -63,7 +63,7 @@ public class MenuPrincipal{
             @SuppressWarnings("static-access")
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-        //       new VentanaConicas().open();
+                new SettingsPanel();
             }
         });
         panel.add(btn2);
