@@ -1,10 +1,10 @@
 package main;
 
-import java.awt.Dimension;
+import Toolkit.SettingsManager;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +14,8 @@ import javax.swing.*;
 public class MenuPrincipal{
 
     private JFrame frame;
+    private SettingsManager setMan = new SettingsManager();
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
