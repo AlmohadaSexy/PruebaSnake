@@ -34,12 +34,9 @@ public class MenuPrincipal{
     private void initialize() {
         frame = new JFrame("MenuPrincipal");
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double anchuraPantalla = (screenSize.getWidth())/3;
-        double alturaPantalla = (screenSize.getHeight()/2);
+        frame.setExtendedState(frame.MAXIMIZED_BOTH);
         frame.setUndecorated(true);
 
-        frame.setSize((int) anchuraPantalla, (int) alturaPantalla);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
