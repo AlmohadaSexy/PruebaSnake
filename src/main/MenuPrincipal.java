@@ -65,13 +65,13 @@ public class MenuPrincipal{
         });
         panelLeft.add(btn1);
 
-        JButton btn2 = new JButton("Elegir dificultad");
+        JButton btn2 = new JButton("Settings");
         btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btn2.addActionListener(new ActionListener() {
             @SuppressWarnings("static-access")
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                new SettingsPanel();
+                SettingsPanel settingsPanel = new SettingsPanel();
+                panelRight.add(settingsPanel);
             }
         });
         panelLeft.add(btn2);
