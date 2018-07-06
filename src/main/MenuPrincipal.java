@@ -44,8 +44,16 @@ public class MenuPrincipal{
         frame.setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 0));
         frame.setContentPane(panel);
+        panel.setLayout(new GridLayout(1,0));
+
+        JPanel panelLeft = new JPanel();
+        panelLeft.setLayout(new GridLayout(3,0));
+
+        JPanel panelRight = new JPanel();
+
+        JSplitPane splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
+        panel.add(splitVertical);
 
         JButton btn1 = new JButton("Jugar");
         btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -55,7 +63,7 @@ public class MenuPrincipal{
                 JOptionPane.showMessageDialog(null, "No hay juego xd", "rip", JOptionPane.INFORMATION_MESSAGE);
             }
         });
-        panel.add(btn1);
+        panelLeft.add(btn1);
 
         JButton btn2 = new JButton("Elegir dificultad");
         btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -66,7 +74,7 @@ public class MenuPrincipal{
         //       new VentanaConicas().open();
             }
         });
-        panel.add(btn2);
+        panelLeft.add(btn2);
 
         JButton btn3 = new JButton("Salir");
         btn3.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -75,6 +83,6 @@ public class MenuPrincipal{
                 System.exit(1);
             }
         });
-        panel.add(btn3);
+        panelLeft.add(btn3);
     }
 }
