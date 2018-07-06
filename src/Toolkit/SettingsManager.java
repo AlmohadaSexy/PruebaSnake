@@ -10,6 +10,7 @@ public class SettingsManager {
     File settingsFile = new File("settings.txt");
     private String[] settings = new String[2];
 
+
     public SettingsManager() {
         createFile();
     }
