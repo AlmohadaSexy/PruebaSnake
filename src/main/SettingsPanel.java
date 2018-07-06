@@ -5,7 +5,7 @@ import Toolkit.SpringUtilities;
 
 
 import javax.swing.*;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +16,8 @@ public class SettingsPanel extends JPanel {
     private JLabel textRes, textDiff;
 
     public SettingsPanel() {
+        super(new GridLayout(1,1));
+
         JPanel panel = new JPanel(new SpringLayout());
 
         textRes = new JLabel("Resolucion:   ");
@@ -42,7 +44,6 @@ public class SettingsPanel extends JPanel {
             }
         });
         panel.add(botonAceptar);
-
-        this.add(panel);
+        add(panel);
     }
 }
