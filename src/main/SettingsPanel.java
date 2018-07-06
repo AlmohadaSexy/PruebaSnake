@@ -46,7 +46,7 @@ class SettingsPanel extends JPanel {
         JButton botonAplicar = new JButton("Aplicar");
         botonAplicar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                new MenuPrincipal().splitVertical.setDividerLocation(1.0);
             }
         });
         panelB.add(botonAplicar);

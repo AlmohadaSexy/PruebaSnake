@@ -15,6 +15,7 @@ public class MenuPrincipal{
     private JFrame frame;
     private SettingsManager setMan = new SettingsManager();
     public JPanel panelRight;
+    public JSplitPane splitVertical;
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -30,6 +31,7 @@ public class MenuPrincipal{
     public MenuPrincipal() {
         initialize();
         frame.setVisible(true);
+        setDividerLocation();
     }
     public MenuPrincipal(int i){
 
@@ -54,8 +56,9 @@ public class MenuPrincipal{
         panelRight = new JPanel();
         panelRight.setLayout(new GridLayout(1,0));
 
-        JSplitPane splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
+        splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
         panel.add(splitVertical);
+        splitVertical.setDividerSize(0);
 
         JButton btn1 = new JButton("Jugar");
         btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -81,6 +84,7 @@ public class MenuPrincipal{
                 SettingsPanel settingsPanel = new SettingsPanel();
                 panelRight.add(settingsPanel);
                 panelRight.updateUI();
+                splitVertical.setDividerLocation(0.8);
             }
         });
         panelLeft.add(btn2);
@@ -99,4 +103,14 @@ public class MenuPrincipal{
         panelRight.removeAll();
         panelRight.updateUI();
     }
+
+    private void setDividerLocation() {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                splitVertical.setDividerLocation(1.0);
+            }
+        });
+    }
+
+
 }
