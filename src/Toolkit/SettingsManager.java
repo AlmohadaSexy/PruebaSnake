@@ -4,7 +4,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class SettingsManager {
 
