@@ -12,7 +12,6 @@ import javax.swing.*;
 
 
 public class MenuPrincipal{
-
     private JFrame frame;
     private SettingsManager setMan = new SettingsManager();
 
@@ -51,6 +50,7 @@ public class MenuPrincipal{
         panelLeft.setLayout(new GridLayout(3,0));
 
         JPanel panelRight = new JPanel();
+        panelRight.setLayout(new GridLayout(1,0));
 
         JSplitPane splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
         panel.add(splitVertical);
@@ -59,8 +59,11 @@ public class MenuPrincipal{
         btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                JOptionPane.showMessageDialog(null, "No hay juego xd", "rip", JOptionPane.INFORMATION_MESSAGE);
+                panelRight.removeAll();
+                //frame.dispose();
+                //JOptionPane.showMessageDialog(null, "No hay juego xd", "rip", JOptionPane.INFORMATION_MESSAGE);
+
+                panelRight.updateUI();
             }
         });
         panelLeft.add(btn1);
@@ -71,10 +74,10 @@ public class MenuPrincipal{
         btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btn2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JFrame frame2 = new JFrame();
+                panelRight.removeAll();
                 SettingsPanel settingsPanel = new SettingsPanel();
-                frame2.add(settingsPanel);
-                frame2.setVisible(true);
+                panelRight.add(settingsPanel);
+                 panelRight.updateUI();
             }
         });
         panelLeft.add(btn2);
