@@ -36,7 +36,11 @@ public class SettingsManager {
         settings[0] = "Resolution '" + resolution.getWidth() + "x" + resolution.getHeight() + "'";
         settings[1] = "Diff 'NORMAL'";
     }
-
+    public void populateFields(Object res, Object diff){
+        settings[0] = "Resolution '" + res + "'";
+        settings[1] = "Diff '" + diff + "'";
+        write();
+    }
     private void write() {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(settingsFile, false));

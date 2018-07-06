@@ -15,6 +15,7 @@ class SettingsPanel extends JPanel {
     public JComboBox comboRes, comboDiff;
     private JLabel textDiff, textRes;
     MenuPrincipal m = new MenuPrincipal(1);
+    SettingsManager s = new SettingsManager();
 
     SettingsPanel() {
         super(new GridLayout(1,1));
@@ -46,7 +47,8 @@ class SettingsPanel extends JPanel {
         JButton botonAplicar = new JButton("Aplicar");
         botonAplicar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new MenuPrincipal().splitVertical.setDividerLocation(1.0);
+                s.populateFields(comboRes.getSelectedItem(), comboDiff.getSelectedItem());
+                    m.splitVertical.setDividerLocation(1.0);
             }
         });
         panelB.add(botonAplicar);
