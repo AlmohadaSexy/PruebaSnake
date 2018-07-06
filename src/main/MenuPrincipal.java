@@ -1,5 +1,6 @@
 package main;
 
+import Toolkit.PanelSettings;
 import Toolkit.SettingsManager;
 
 import java.awt.EventQueue;
@@ -52,9 +53,7 @@ public class MenuPrincipal{
         JPanel panelLeft = new JPanel();
         panelLeft.setLayout(new GridLayout(3,0));
 
-        JPanel panelRight = new JPanel();
-
-        splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
+        splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, new PanelSettings().getPanelSettings());
         panel.add(splitVertical);
         splitVertical.setOneTouchExpandable(true);
 
