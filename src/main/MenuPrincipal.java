@@ -14,7 +14,7 @@ import javax.swing.*;
 public class MenuPrincipal{
     private JFrame frame;
     private SettingsManager setMan = new SettingsManager();
-
+    public JPanel panelRight;
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -31,7 +31,9 @@ public class MenuPrincipal{
         initialize();
         frame.setVisible(true);
     }
+    public MenuPrincipal(int i){
 
+    }
     private void initialize() {
         frame = new JFrame("MenuPrincipal");
 
@@ -49,7 +51,7 @@ public class MenuPrincipal{
         JPanel panelLeft = new JPanel();
         panelLeft.setLayout(new GridLayout(3,0));
 
-        JPanel panelRight = new JPanel();
+        panelRight = new JPanel();
         panelRight.setLayout(new GridLayout(1,0));
 
         JSplitPane splitVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelLeft, panelRight);
@@ -59,7 +61,8 @@ public class MenuPrincipal{
         btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                panelRight.removeAll();
+                ClearRightPanel();
+                // panelRight.removeAll();
                 //frame.dispose();
                 //JOptionPane.showMessageDialog(null, "No hay juego xd", "rip", JOptionPane.INFORMATION_MESSAGE);
 
@@ -74,10 +77,10 @@ public class MenuPrincipal{
         btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btn2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                panelRight.removeAll();
+                ClearRightPanel();
                 SettingsPanel settingsPanel = new SettingsPanel();
                 panelRight.add(settingsPanel);
-                 panelRight.updateUI();
+                panelRight.updateUI();
             }
         });
         panelLeft.add(btn2);
@@ -90,5 +93,10 @@ public class MenuPrincipal{
             }
         });
         panelLeft.add(btn3);
+    }
+
+    public void ClearRightPanel(){
+        panelRight.removeAll();
+        panelRight.updateUI();
     }
 }

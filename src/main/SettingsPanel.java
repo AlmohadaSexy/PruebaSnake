@@ -9,41 +9,49 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SettingsPanel extends JPanel {
+class SettingsPanel extends JPanel {
     String[] resoluciones = {"FullScreen", "1920x1080", "1280x720", "1024x768", "800x600"};
     String[] difficulties = {"FACIL", "NORMAL", "DIFICIL", "HARDCORE"};
     public JComboBox comboRes, comboDiff;
-    private JLabel textRes, textDiff;
+    private JLabel textDiff, textRes;
+    MenuPrincipal m = new MenuPrincipal(1);
 
-    public SettingsPanel() {
+    SettingsPanel() {
         super(new GridLayout(1,1));
 
-        JPanel panel = new JPanel(new SpringLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JPanel panelP = new JPanel(new SpringLayout());
+        JPanel panelB = new JPanel();
 
         textRes = new JLabel("Resolucion:   ");
         textRes.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        panel.add(textRes);
+        panelP.add(textRes);
         comboRes = new JComboBox(resoluciones);
+        comboRes.setFont(new Font("Tahoma", Font.PLAIN, 22));
         textRes.setLabelFor(comboRes);
-        panel.add(comboRes);
+        panelP.add(comboRes);
 
 
         textDiff = new JLabel("Dificultad:   ");
         textDiff.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        panel.add(textDiff);
+        panelP.add(textDiff);
         comboDiff = new JComboBox(difficulties);
+        comboDiff.setFont(new Font("Tahoma", Font.PLAIN, 22));
         textDiff.setLabelFor(comboDiff);
-        panel.add(comboDiff);
+        panelP.add(comboDiff);
 
-        SpringUtilities.makeCompactGrid(panel,2,2,6, 6,10,10);
+        SpringUtilities.makeGrid(panelP,2,2,6, 6,10,10);
 
-        JButton botonAceptar = new JButton();
-        botonAceptar.addActionListener(new ActionListener() {
+        JButton botonAplicar = new JButton("Aplicar");
+        botonAplicar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        panel.add(botonAceptar);
+        panelB.add(botonAplicar);
+        panel.add(panelP, BorderLayout.CENTER);
+        panel.add(panelB, BorderLayout.SOUTH);
         add(panel);
     }
 }
