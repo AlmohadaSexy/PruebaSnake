@@ -42,4 +42,5 @@ public class MainFrame extends JFrame {
         pack();
         setLocationRelativeTo(null);
     }
+
 }

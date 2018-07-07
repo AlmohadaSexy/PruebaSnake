@@ -142,13 +142,15 @@ public class MenuPrincipal extends MainFrame {
 
     private void resizeFrame() throws Exception{
         s.resolveResolution();
-        panel.setSize(s.getResWidth(), s.getResHeight());
-        super.setSize(800,600);
+        setSize(s.getResWidth(), s.getResHeight());
+        revalidate();
+        panel.updateUI();
     }
 
     public JPanel getMenu() {
         return panel;
     }
+
 
 
 }
