@@ -150,9 +150,8 @@ public class MenuPrincipal{
             public void actionPerformed(ActionEvent e) {
                 s.populateFields(comboRes.getSelectedItem(), comboDiff.getSelectedItem());
                 try {
-                    s.resolveResolution();
-                    frame.setSize(s.getResWidth(), s.getResHeight());
-                    frame.setLocationRelativeTo(null);
+                    resizeFrame();
+                    setDividerLocation();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -165,6 +164,12 @@ public class MenuPrincipal{
         setPan.add(panel);
 
         return setPan;
+    }
+
+    private void resizeFrame() throws Exception{
+        s.resolveResolution();
+        frame.setSize(s.getResWidth(), s.getResHeight());
+        frame.setLocationRelativeTo(null);
     }
 
 
