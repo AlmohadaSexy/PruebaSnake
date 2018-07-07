@@ -26,10 +26,12 @@ public class MainFrame extends JFrame {
 
     }
     public MainFrame(int width, int height, JPanel panel) {
+        dispose();
         this.panel = panel;
         build();
         setVisible(true);
         setSize(width, height);
+        setLocationRelativeTo(null);
     }
 
     public MainFrame(JPanel panel) {

@@ -1,2 +1,2 @@
-Resolution '1280x720'
+Resolution '1024x768'
 Diff 'FACIL'
