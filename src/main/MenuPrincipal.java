@@ -15,7 +15,8 @@ public class MenuPrincipal{
     private JFrame frame;
     public JPanel panelRight, setPan;
     public JSplitPane splitVertical;
-    String[] resoluciones = {"FullScreen", "1920x1080", "1280x720", "1024x768", "800x600"};
+    Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
+    String[] resoluciones = {(int)resolution.getWidth() + "x" + (int)resolution.getHeight(), "1920x1080", "1280x720", "1024x768", "800x600"};
     String[] difficulties = {"FACIL", "NORMAL", "DIFICIL", "HARDCORE"};
     public JComboBox comboRes, comboDiff;
     private JLabel textDiff, textRes;

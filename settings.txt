@@ -1,2 +1,2 @@
-Resolution 'FullScreen'
-Diff 'DIFICIL'
+Resolution '1920x1080'
+Diff 'FACIL'
