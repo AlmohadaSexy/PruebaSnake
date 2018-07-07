@@ -1,20 +1,20 @@
 package frame;
 
 import paneles.MenuPrincipal;
-import Toolkit.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame {
 
+    public JFrame frame;
     private JPanel panel;
-    SettingsManager s = new SettingsManager();
+    MenuPrincipal m = new MenuPrincipal();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new MainFrame(new MenuPrincipal().getMenu());
+                    new MainFrame();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -22,34 +22,42 @@ public class MainFrame extends JFrame {
         });
     }
 
-    public MainFrame() {
-
-    }
-    public MainFrame(int width, int height) {
-        //dispose();
-        removeAll();
-        setSize(width, height);
-        //build();
-        setVisible(true);
-
+    public MainFrame(){
+        initialBuild();
+        frame.pack();
+        frame.setExtendedState(frame.MAXIMIZED_BOTH);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        m.setDividerLocation();
     }
 
-    public MainFrame(JPanel panel) {
+    public MainFrame(int width, int height, JPanel panel) {
         this.panel = panel;
-        build();
-        setVisible(true);
+        rebuild();
+        frame.setSize(width, height);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
     }
 
-    public void build() {
-        setExtendedState(MAXIMIZED_BOTH);
-        setUndecorated(true);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
-        setContentPane(this.panel);
-        pack();
-        setLocationRelativeTo(null);
+    public void initialBuild(){
+        frame = new JFrame();
+        frame.setUndecorated(true);
+
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+
+        frame.setContentPane(m.getMenu());
+    }
+
+    public void rebuild() {
+        frame = new JFrame();
+        frame.setUndecorated(true);
+
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+
+        frame.setContentPane(panel);
     }
 
 }

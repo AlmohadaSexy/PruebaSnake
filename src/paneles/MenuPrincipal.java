@@ -12,7 +12,7 @@ import sun.applet.Main;
 import javax.swing.*;
 
 
-public class MenuPrincipal extends MainFrame {
+public class MenuPrincipal{
     public JPanel panelRight, setPan;
     public JSplitPane splitVertical;
     JPanel panel = new JPanel();
@@ -84,7 +84,7 @@ public class MenuPrincipal extends MainFrame {
         panelRight.updateUI();
     }
 
-    private void setDividerLocation() {
+    public void setDividerLocation() {
         SwingUtilities.invokeLater(new Runnable(){
             public void run(){
                 splitVertical.setDividerLocation(1.0);
@@ -142,13 +142,9 @@ public class MenuPrincipal extends MainFrame {
     }
 
     private void resizeFrame() throws Exception{
-        //dispose();
-        //setVisible(false);
+        SwingUtilities.getWindowAncestor(panel).dispose();
         s.resolveResolution();
-        setExtendedState(NORMAL);
-        new MainFrame(s.getResWidth(), s.getResHeight());
-        //revalidate();
-        panel.updateUI();
+        new MainFrame(s.getResWidth(), s.getResHeight(), panel);
     }
 
     public JPanel getMenu() {
