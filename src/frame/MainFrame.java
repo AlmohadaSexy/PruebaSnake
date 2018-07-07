@@ -1,13 +1,14 @@
 package frame;
 
 import paneles.MenuPrincipal;
-
+import Toolkit.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
 
     private JPanel panel;
+    SettingsManager s = new SettingsManager();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -23,6 +24,12 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
 
+    }
+    public MainFrame(int width, int height, JPanel panel) {
+        this.panel = panel;
+        build();
+        setVisible(true);
+        setSize(width, height);
     }
 
     public MainFrame(JPanel panel) {

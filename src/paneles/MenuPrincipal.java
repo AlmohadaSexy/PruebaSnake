@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Toolkit.SpringUtilities;
 import frame.MainFrame;
+import sun.applet.Main;
 
 import javax.swing.*;
 
@@ -141,16 +142,15 @@ public class MenuPrincipal extends MainFrame {
     }
 
     private void resizeFrame() throws Exception{
+        dispose();
         s.resolveResolution();
-        setSize(s.getResWidth(), s.getResHeight());
-        revalidate();
+        setExtendedState(NORMAL);
+        new MainFrame(s.getResWidth(), s.getResHeight(), getMenu());
+        //revalidate();
         panel.updateUI();
     }
 
     public JPanel getMenu() {
         return panel;
     }
-
-
-
 }
