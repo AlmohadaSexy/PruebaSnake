@@ -16,7 +16,7 @@ public class MenuPrincipal{
     public JPanel panelRight, setPan;
     public JSplitPane splitVertical;
     Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
-    String[] resoluciones = {(int)resolution.getWidth() + "x" + (int)resolution.getHeight(), "1920x1080", "1280x720", "1024x768", "800x600"};
+    String[] resoluciones = {(int)resolution.getWidth()+"x"+(int)resolution.getHeight(), "1920x1080", "1280x720", "1024x768", "800x600"};
     String[] difficulties = {"FACIL", "NORMAL", "DIFICIL", "HARDCORE"};
     public JComboBox comboRes, comboDiff;
     private JLabel textDiff, textRes;
@@ -89,7 +89,7 @@ public class MenuPrincipal{
                 ClearRightPanel();
                 panelRight.add(buildSettingsPanel());
                 panelRight.updateUI();
-                splitVertical.setDividerLocation(0.8);
+                splitVertical.setDividerLocation(0.7);
             }
         });
         panelLeft.add(btn2);
@@ -149,6 +149,13 @@ public class MenuPrincipal{
         botonAplicar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 s.populateFields(comboRes.getSelectedItem(), comboDiff.getSelectedItem());
+                try {
+                    s.resolveResolution();
+                    frame.setSize(s.getResWidth(), s.getResHeight());
+                    frame.setLocationRelativeTo(null);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
                 splitVertical.setDividerLocation(1.0);
             }
         });

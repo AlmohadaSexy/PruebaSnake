@@ -4,11 +4,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class SettingsManager {
 
     File settingsFile = new File("settings.txt");
     private String[] settings = new String[2];
+    private int resWidth, resHeight;
 
 
     public SettingsManager() {
@@ -42,6 +46,23 @@ public class SettingsManager {
         settings[1] = "Diff '" + diff + "'";
         write();
     }
+
+    public void resolveResolution() throws Exception{
+        String resStringFull = Files.readAllLines(Paths.get(String.valueOf(settingsFile))).get(0);
+        String resString = resStringFull.substring(resStringFull.indexOf("'")+1, resStringFull.lastIndexOf("'"));
+        String[] widthHeight = resString.split("x");
+        resWidth = Integer.parseInt(widthHeight[0]);
+        resHeight = Integer.parseInt(widthHeight[1]);
+    }
+
+    public int getResWidth(){
+        return resWidth;
+    }
+
+    public int getResHeight(){
+        return resHeight;
+    }
+
     private void write() {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(settingsFile, false));
