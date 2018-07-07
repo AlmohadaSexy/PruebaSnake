@@ -142,10 +142,11 @@ public class MenuPrincipal extends MainFrame {
     }
 
     private void resizeFrame() throws Exception{
-
+        //dispose();
+        //setVisible(false);
         s.resolveResolution();
         setExtendedState(NORMAL);
-        new MainFrame(s.getResWidth(), s.getResHeight(), getMenu());
+        new MainFrame(s.getResWidth(), s.getResHeight());
         //revalidate();
         panel.updateUI();
     }
