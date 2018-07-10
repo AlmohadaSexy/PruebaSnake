@@ -1,4 +1,4 @@
-package main;
+package paneles;
 
 import Toolkit.SettingsManager;
 
@@ -6,15 +6,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Toolkit.SpringUtilities;
+import frame.MainFrame;
+import sun.applet.Main;
 
 import javax.swing.*;
 
 
 public class MenuPrincipal{
-
-    private JFrame frame;
     public JPanel panelRight, setPan;
     public JSplitPane splitVertical;
+    JPanel panel = new JPanel();
     Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
     String[] resoluciones = {(int)resolution.getWidth()+"x"+(int)resolution.getHeight(), "1920x1080", "1280x720", "1024x768", "800x600"};
     String[] difficulties = {"FACIL", "NORMAL", "DIFICIL", "HARDCORE"};
@@ -22,38 +23,12 @@ public class MenuPrincipal{
     private JLabel textDiff, textRes;
     SettingsManager s = new SettingsManager();
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new MenuPrincipal();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     public MenuPrincipal() {
         initialize();
-        frame.setVisible(true);
         setDividerLocation();
     }
-    public MenuPrincipal(int i){
 
-    }
     private void initialize() {
-        frame = new JFrame("MenuPrincipal");
-
-        frame.setExtendedState(frame.MAXIMIZED_BOTH);
-        frame.setUndecorated(true);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-        frame.setLocationRelativeTo(null);
-
-        JPanel panel = new JPanel();
-        frame.setContentPane(panel);
         panel.setLayout(new GridLayout(1,0));
 
         JPanel panelLeft = new JPanel();
@@ -109,7 +84,7 @@ public class MenuPrincipal{
         panelRight.updateUI();
     }
 
-    private void setDividerLocation() {
+    public void setDividerLocation() {
         SwingUtilities.invokeLater(new Runnable(){
             public void run(){
                 splitVertical.setDividerLocation(1.0);
@@ -167,10 +142,12 @@ public class MenuPrincipal{
     }
 
     private void resizeFrame() throws Exception{
+        SwingUtilities.getWindowAncestor(panel).dispose();
         s.resolveResolution();
-        frame.setSize(s.getResWidth(), s.getResHeight());
-        frame.setLocationRelativeTo(null);
+        new MainFrame(s.getResWidth(), s.getResHeight(), panel);
     }
 
-
+    public JPanel getMenu() {
+        return panel;
+    }
 }
